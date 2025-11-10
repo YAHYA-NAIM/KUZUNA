@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">kuzina</string>
+
+    <!-- onboarding Strings -->
+    <string name="first_title">Find Recipes\nYou’ll Love</string>
+    <string name="first_desc"> Explore thousands of recipes from around\nthe world — from quick snacks to gourmet\nmeals.</string>
+
+    <string name="second_title">Cook Along with\nVideo Tutorials</string>
+    <string name="second_desc">Watch step-by-step cooking videos or\ndownload them to follow offline — perfect for\nevery kitchen moment!</string>
+
+    <string name="third_title">Enjoy Meals\nWith Your Family</string>
+    <string name="third_desc">Share the joy of cooking and enjoy \ndelicious meals made together with the ones \nyou love.</string>
+
+    <!-- Button Strings -->
+    <string name="next">next</string>
+    <string name="back">back</string>
+</resources>
