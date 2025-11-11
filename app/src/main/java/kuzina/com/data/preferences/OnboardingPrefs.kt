@@ -1,0 +1,18 @@
+package kuzina.com.data.preferences
+
+import android.content.Context
+
+class OnboardingPrefs (private val context: Context){
+
+    fun isOnboardingCompleted(): Boolean{
+        return context.getSharedPreferences("onboarding",Context.MODE_PRIVATE)
+            .getBoolean("completed",false)
+    }
+    fun setOnboardingCompleted(){
+        context.getSharedPreferences("onboarding",Context.MODE_PRIVATE)
+            .edit()
+            .putBoolean("completed",true)
+            .apply()
+    }
+
+}

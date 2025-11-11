@@ -1,4 +1,4 @@
-package kuzina.com.ui.screens.onboardings
+package kuzina.com.ui.screens.onboardings.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -27,7 +27,7 @@ fun OnboardingGraphUI (onboardingModel: OnboardingModel) {
     Column (modifier = Modifier.fillMaxWidth()){
 
         Spacer(
-            modifier = Modifier.size(70.dp)
+            modifier = Modifier.size(80.dp)
         )
 
         Image( painter = painterResource(id = onboardingModel.Image),
@@ -39,20 +39,20 @@ fun OnboardingGraphUI (onboardingModel: OnboardingModel) {
         )
 
         Spacer(
-            modifier = Modifier.size(30.dp)
+            modifier = Modifier.size(60.dp)
         )
 
         Text(
             text = stringResource(id = onboardingModel.title),
             modifier = Modifier.fillMaxWidth(),
-            fontSize = 20.sp,
+            fontSize = 27.sp,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface
         )
 
         Spacer(
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(30.dp)
         )
 
         Text(

@@ -18,7 +18,6 @@ class MainActivity : ComponentActivity() {
             Surface(color = MaterialTheme.colorScheme.background) {
                 NavGraph(navController = navController)
         }
-
         }
     }
 }

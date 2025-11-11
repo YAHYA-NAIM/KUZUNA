@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import kuzina.com.ui.screens.home.HomeScreen
+import kuzina.com.ui.screens.onboardings.OnboardingScreen
 import kuzina.com.ui.screens.splashscreen.SplashScreen
 import kuzina.com.util.constants.Routes
 
@@ -15,10 +16,19 @@ fun NavGraph(navController: NavHostController) {
         navController = navController,
         startDestination = Routes.Splash.route
     ) {
+
         composable(Routes.Splash.route) {
             SplashScreen(onNavigate = { route ->
                 navController.navigate(route) {
                     popUpTo(Routes.Splash.route) { inclusive = true }
+                }
+            })
+        }
+
+        composable (Routes.Onboarding.route){
+            OnboardingScreen(onFinished = {
+                navController.navigate(Routes.Home.route){
+                    popUpTo(Routes.Onboarding.route){ inclusive = true }
                 }
             })
         }
