@@ -12,19 +12,24 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kuzina.com.R
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.togetherWith
 import kuzina.com.data.model.OnboardingModel
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.launch
 import kuzina.com.data.preferences.OnboardingPrefs
-import kuzina.com.ui.screens.onboardings.components.ButtonUi
+import kuzina.com.ui.screens.onboardings.components.CircularIconButton
 import kuzina.com.ui.screens.onboardings.components.IndicatorUI
 import kuzina.com.ui.screens.onboardings.components.OnboardingGraphUI
+import kuzina.com.ui.screens.onboardings.components.StartButton
 
 @Composable
 fun OnboardingScreen(onFinished: () -> Unit) {
@@ -43,77 +48,74 @@ fun OnboardingScreen(onFinished: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(10.dp,5.dp),
+                    .padding(15.dp, 15.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
-                Box (modifier = Modifier.weight(1f),
-                    Alignment.CenterStart){
-                    if (pageState.currentPage > 0){
-                        ButtonUi(
-                            text = R.string.back,
-                            Color.Transparent,
-                            textColor = colorResource(id = R.color.primaryColor)
-
-                        ) {
-                            scope.launch {
-                                if (pageState.currentPage > 0) {
-                                    pageState.animateScrollToPage(pageState.currentPage - 1)
-                                }
-                            }
-
-                        }
-                    }
-                }
-
-
-                Box (modifier = Modifier.weight(1f),
-                    Alignment.Center){
+                // Indicator in the center
+                Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {
                     IndicatorUI(pages.size, pageState.currentPage)
                 }
 
+                // Button on the right
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(10.dp),
+                    contentAlignment = Alignment.CenterEnd
+                ) {
+                    AnimatedContent(
+                        targetState = pageState.currentPage == pages.size - 1,
+                        label = "OnboardingButtonTransition",
+                        transitionSpec = {
 
-                Box (modifier = Modifier.weight(1f),
-                    Alignment.CenterEnd){
-                    val rightButtonText = if (pageState.currentPage == pages.size - 1){
-                        R.string.start
-                    }else{
-                        R.string.next
-                    }
-                    ButtonUi(
-                        text = rightButtonText,
-                        BackgroundColor = colorResource(id = R.color.primaryColor),
-                        textColor = colorResource(id = R.color.white),
-                    ) {
-                        scope.launch {
-                            if (pageState.currentPage < pages.size - 1) {
-                                pageState.animateScrollToPage(pageState.currentPage + 1)
-                            } else {
-                                prefs.setOnboardingCompleted()
-                                onFinished()
+                            fadeIn() + scaleIn(initialScale = 0.8f) togetherWith
+                                    fadeOut() + scaleOut(targetScale = 0.8f)
+                        }
+                    ) { isLastPage ->
+                        if (isLastPage) {
+                            StartButton(
+                                textRes = R.string.start,
+                                iconRes = R.drawable.ic_start_cooking
+                            ) {
+                                scope.launch {
+                                    prefs.setOnboardingCompleted()
+                                    onFinished()
+                                }
+                            }
+                        } else {
+                            CircularIconButton(
+                                iconRes = R.drawable.ic_arrow_forward
+                            ) {
+                                scope.launch {
+                                    pageState.animateScrollToPage(pageState.currentPage + 1)
+                                }
                             }
                         }
                     }
                 }
-
             }
         },
-        content = {
-            Column(Modifier.padding(it)) {
+        content = { paddingValues ->
+            Column(Modifier.padding(paddingValues)) {
                 HorizontalPager(state = pageState) { index ->
-                    OnboardingGraphUI(onboardingModel = pages[index])
+                    OnboardingGraphUI(
+                        onboardingModel = pages[index],
+                        onSkip = {
+                            scope.launch {
+                                pageState.scrollToPage(pages.size - 1)
+                            }
+                        }
+                    )
                 }
             }
         }
     )
 }
 
-
 @Preview
 @Composable
-fun OnboardingScreenPreview(){
-    OnboardingScreen{
-
-    }
+fun OnboardingScreenPreview() {
+    OnboardingScreen { }
 }

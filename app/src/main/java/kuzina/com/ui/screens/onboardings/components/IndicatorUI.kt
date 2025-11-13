@@ -28,16 +28,16 @@ fun IndicatorUI(
 
     Row(horizontalArrangement = Arrangement.SpaceBetween){
         repeat(PageSize){
-            Spacer(modifier = Modifier.size(2.5.dp))
+            Spacer(modifier = Modifier.size(10.dp))
 
             Box( modifier = Modifier
-                .height(14.dp)
-                .width(width = if (it == currentPage) 32.dp else 14.dp)
-                .clip(RoundedCornerShape(10.dp))
+                .height(12.dp)
+                .width(width =  12.dp)
+                .clip(RoundedCornerShape(12.dp))
                 .background(color = if (it == currentPage) selectedColor else unselectedColor),
             )
 
-            Spacer(modifier = Modifier.size(2.5.dp))
+            Spacer(modifier = Modifier.size(10.dp))
 
         }
 
