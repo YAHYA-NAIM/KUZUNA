@@ -12,9 +12,16 @@
     <string name="third_desc">Share the joy of cooking and enjoy \ndelicious meals made together with the ones \nyou love.</string>
 
     <!-- Button Strings -->
-    <string name="next">next</string>
-    <string name="back">back</string>
     <string name="start">Start Cooking</string>
     <string name="skip">skip</string>
+
+    <!-- Login/SignUp Strings -->
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_desc">Please enter your account here</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email or phone number</string>
+
+
+
 
 </resources>

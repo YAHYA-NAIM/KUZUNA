@@ -77,7 +77,7 @@ fun OnboardingGraphUI (
             textAlign = TextAlign.Center,
             fontFamily = Inter,
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onSurface,
+            color = colorResource(id = R.color.black),
             lineHeight = 30.sp
         )
 

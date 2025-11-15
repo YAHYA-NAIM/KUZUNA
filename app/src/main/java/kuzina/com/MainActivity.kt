@@ -7,7 +7,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.navigation.compose.rememberNavController
 import kuzina.com.navigation.NavGraph
-
+import kuzina.com.ui.screens.auth.LoginScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             Surface(color = MaterialTheme.colorScheme.background) {
                 NavGraph(navController = navController)
-        }
+            }
         }
     }
 }

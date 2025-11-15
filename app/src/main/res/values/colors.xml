@@ -3,6 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primaryColor">#129575</color>
-    <color name="description">#535763</color>
     <color name="unselected">#AFD3CA</color>
+    <color name="description">#535763</color>
+    <color name="login_desc">#9FA5C0</color>
+    <color name="text_field_border">#D0DBEA</color>
+
 </resources>
