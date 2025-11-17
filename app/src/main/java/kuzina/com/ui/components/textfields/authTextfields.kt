@@ -3,6 +3,7 @@ package kuzina.com.ui.components.textfields
 import androidx.compose.foundation.border
 import androidx.compose.material3.*
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -58,6 +59,7 @@ fun authTextField(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
+            .height(60.dp)
             .border(
                 width = if (isFocused) 1.dp else 2.5.dp,
                 color = if (isFocused) colorResource(id = R.color.primaryColor)
@@ -113,6 +115,7 @@ fun passwordfield(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
+            .height(60.dp)
             .border(
                 width = if (isFocused) 1.dp else 2.5.dp ,
                 color = if (isFocused) colorResource(id = R.color.primaryColor)
