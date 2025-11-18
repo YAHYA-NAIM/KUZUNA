@@ -1,20 +1,9 @@
 package kuzina.com.ui.components.buttons
 
-
-import android.provider.CalendarContract
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,58 +11,58 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import kuzina.com.R
 import kuzina.com.ui.theme.Inter
+import kuzina.com.ui.theme.W
+import kuzina.com.ui.theme.H
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun CustomAuthButton(onClick: () -> Unit, text: Int) {
     Button(
         onClick = onClick,
-        shape = RoundedCornerShape(50.dp),
+        shape = RoundedCornerShape(W(0.12f)),
         colors = ButtonDefaults.buttonColors(
             containerColor = colorResource(id = R.color.primaryColor),
             contentColor = colorResource(id = R.color.white)
         ),
         contentPadding = PaddingValues(
-            horizontal = 35.dp,
-            vertical = 18.dp
+            horizontal = W(0.09f),
+            vertical = H(0.02f)
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .height(56.dp)
+            .padding(horizontal = W(0.04f), vertical = H(0.008f))  // responsive padding
+            .height(H(0.07f))
     ) {
         Text(
             text = stringResource(id = text),
             fontFamily = Inter,
             fontWeight = FontWeight.Bold,
-
+            fontSize = H(0.022f).value.sp
         )
     }
 }
 
-
 @Composable
-fun GoogleButton(onClick: () -> Unit) {
+fun GoogleButton(onClick: () -> Unit, text: Int) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent,
         ),
         contentPadding = PaddingValues(
-            horizontal = 35.dp,
-            vertical = 18.dp
+            horizontal = W(0.09f),
+            vertical = H(0.02f)
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .height(56.dp)
+            .padding(horizontal = W(0.04f), vertical = H(0.010f))
+            .height(H(0.070f))
             .border(
-                width = 2.dp,
+                width = H(0.003f),  // ≈ 2dp
                 color = colorResource(id = R.color.text_color),
-                RoundedCornerShape(50.dp)
+                shape = RoundedCornerShape(W(0.12f))
             )
     ) {
         Icon(
@@ -81,19 +70,22 @@ fun GoogleButton(onClick: () -> Unit) {
             contentDescription = null,
             tint = Color.Unspecified
         )
-        Spacer(modifier = Modifier.size(15.dp))
+        Spacer(modifier = Modifier.size(W(0.035f)))  // ≈ 15dp
 
         Text(
-            text = stringResource(id = R.string.Google),
+            text = stringResource(id = text),
             fontFamily = Inter,
             fontWeight = FontWeight.Bold,
+            fontSize = H(0.022f).value.sp,
             color = colorResource(id = R.color.text_color)
         )
     }
 }
 
-@Preview
 @Composable
-fun GoogleButtonPreview(){
-    GoogleButton({})
+fun PreviewButtons() {
+    Column {
+        CustomAuthButton({}, R.string.Sign_up)
+        GoogleButton({}, R.string.Google)
+    }
 }

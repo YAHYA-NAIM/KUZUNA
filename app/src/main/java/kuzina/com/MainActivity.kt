@@ -8,17 +8,19 @@ import androidx.compose.material3.Surface
 import androidx.navigation.compose.rememberNavController
 import kuzina.com.navigation.NavGraph
 import kuzina.com.ui.screens.auth.LoginScreen
+import kuzina.com.ui.screens.auth.SignUpScreen
+import kuzina.com.ui.theme.ProvideDimens
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-//            val navController = rememberNavController()
-//            Surface(color = MaterialTheme.colorScheme.background) {
-//                NavGraph(navController = navController)
-//            }
-            LoginScreen()
+            ProvideDimens()
+            val navController = rememberNavController()
+            Surface(color = MaterialTheme.colorScheme.background) {
+                NavGraph(navController = navController)
+            }
         }
     }
 }

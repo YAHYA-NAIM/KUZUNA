@@ -26,7 +26,7 @@ class SplashViewModel (
         viewModelScope.launch {
             delay(splashDuration)
             if(onboardingprefs.isOnboardingCompleted()){
-                _nextRoute.value = Routes.Home
+                _nextRoute.value = Routes.SignUp
             }else{
                 _nextRoute.value = Routes.Onboarding
             }

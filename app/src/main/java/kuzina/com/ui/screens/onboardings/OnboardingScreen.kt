@@ -1,35 +1,28 @@
 package kuzina.com.ui.screens.onboardings
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import kuzina.com.R
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
-import androidx.compose.animation.togetherWith
-import kuzina.com.data.model.OnboardingModel
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.animation.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
+import kuzina.com.data.model.OnboardingModel
 import kuzina.com.data.preferences.OnboardingPrefs
 import kuzina.com.ui.screens.onboardings.components.CircularIconButton
 import kuzina.com.ui.screens.onboardings.components.IndicatorUI
 import kuzina.com.ui.screens.onboardings.components.OnboardingGraphUI
 import kuzina.com.ui.screens.onboardings.components.StartButton
+import kuzina.com.ui.theme.H
+import kuzina.com.ui.theme.W
 
 @Composable
 fun OnboardingScreen(onFinished: () -> Unit) {
@@ -48,7 +41,7 @@ fun OnboardingScreen(onFinished: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(15.dp, 15.dp),
+                    .padding(horizontal = W(0.04f), vertical = H(0.02f)),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -62,14 +55,13 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                 Box(
                     modifier = Modifier
                         .weight(1f)
-                        .padding(10.dp),
+                        .padding(horizontal = W(0.02f)),
                     contentAlignment = Alignment.CenterEnd
                 ) {
                     AnimatedContent(
                         targetState = pageState.currentPage == pages.size - 1,
                         label = "OnboardingButtonTransition",
                         transitionSpec = {
-
                             fadeIn() + scaleIn(initialScale = 0.8f) togetherWith
                                     fadeOut() + scaleOut(targetScale = 0.8f)
                         }
@@ -86,7 +78,8 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                             }
                         } else {
                             CircularIconButton(
-                                iconRes = R.drawable.ic_arrow_forward
+                                iconRes = R.drawable.ic_arrow_forward,
+
                             ) {
                                 scope.launch {
                                     pageState.animateScrollToPage(pageState.currentPage + 1)

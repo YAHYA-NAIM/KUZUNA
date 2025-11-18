@@ -17,15 +17,25 @@
 
     <!-- Login/SignUp Strings -->
     <string name="welcome_back">Welcome Back!</string>
+    <string name="welcome">Welcome!</string>
+    <string name="SignUp_desc">Please enter your informations here</string>
     <string name="login_desc">Please enter your account here</string>
     <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="name_hint">Name</string>
     <string name="email_hint">Email or phone number</string>
     <string name="forgot_pass">Forgot password?</string>
+    <string name="password_must">Your Password must contain:</string>
+    <string name="atleast">Atleast 6 characters</string>
+    <string name="Contains_num">Contains a number</string>
     <string name="login">Login</string>
     <string name="or">Or continue with</string>
+    <string name="or_signup">Or Sign Up With</string>
     <string name="noacc">Don’t have any account?</string>
+    <string name="already_mem">Already a member?</string>
     <string name="Sign_up">Sign Up</string>
     <string name="Google">Sign in with Google</string>
+    <string name="Google2">Sign Up with Google</string>
 
 
 

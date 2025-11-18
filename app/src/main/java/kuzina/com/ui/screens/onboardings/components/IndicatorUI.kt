@@ -5,61 +5,47 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.shape.RoundedCornerShape
 import kuzina.com.R
+import kuzina.com.ui.theme.W
+import kuzina.com.ui.theme.H
 
 @Composable
 fun IndicatorUI(
-    PageSize : Int,
-    currentPage : Int,
+    pageSize: Int,
+    currentPage: Int,
     selectedColor: Color = colorResource(id = R.color.primaryColor),
-    unselectedColor: Color =colorResource(id = R.color.unselected)
-){
+    unselectedColor: Color = colorResource(id = R.color.unselected),
+    dotSizeFraction: Float = 0.03f, // fraction of screen width
+    spacingFraction: Float = 0.015f // fraction of screen width
+) {
+    Row(horizontalArrangement = Arrangement.Center) {
+        repeat(pageSize) {
+            Spacer(modifier = Modifier.width(W(spacingFraction)))
 
-    Row(horizontalArrangement = Arrangement.SpaceBetween){
-        repeat(PageSize){
-            Spacer(modifier = Modifier.size(10.dp))
-
-            Box( modifier = Modifier
-                .height(12.dp)
-                .width(width =  12.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(color = if (it == currentPage) selectedColor else unselectedColor),
+            Box(
+                modifier = Modifier
+                    .size(W(dotSizeFraction), W(dotSizeFraction)) // responsive size
+                    .clip(RoundedCornerShape(W(dotSizeFraction / 2)))
+                    .background(color = if (it == currentPage) selectedColor else unselectedColor)
             )
 
-            Spacer(modifier = Modifier.size(10.dp))
-
+            Spacer(modifier = Modifier.width(W(spacingFraction)))
         }
-
-
     }
-
 }
 
-@Preview(showBackground = true)
 @Composable
-fun IndicatorUIPreview1(){
-    IndicatorUI(3,0)
-}
-@Preview(showBackground = true)
-@Composable
-fun IndicatorUIPreview2(){
-    IndicatorUI(3,1)
-
-}
-@Preview(showBackground = true)
-@Composable
-fun IndicatorUIPreview3(){
-    IndicatorUI(3,2)
-
+fun IndicatorUIPreview() {
+    Row(horizontalArrangement = Arrangement.spacedBy(W(0.02f))) {
+        IndicatorUI(pageSize = 3, currentPage = 0)
+    }
 }
