@@ -45,7 +45,6 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-
                 // Indicator in the center
                 Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {
                     IndicatorUI(pages.size, pageState.currentPage)
