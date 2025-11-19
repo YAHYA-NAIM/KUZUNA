@@ -119,21 +119,13 @@ fun SignUpScreen(
                     onPasswordToggle = { isPasswordVisible = !isPasswordVisible },
                 )
 
-                Spacer(modifier = Modifier.height(H(0.005f)))
+
 
                 // Password hints
                 Column(
                     modifier = Modifier.fillMaxWidth().padding(start = W(0.02f)),
                     horizontalAlignment = Alignment.Start
                 ) {
-                    Text(
-                        text = stringResource(id = R.string.password_must),
-                        fontSize = (H(0.020f)).value.sp,
-                        fontFamily = Inter,
-                        fontWeight = FontWeight.Medium,
-                        color = colorResource(id = R.color.text_color2),
-                    )
-
                     Row(Modifier.fillMaxWidth().padding(horizontal = H(0.005f), vertical = H(0.005f))) {
                         Icon(
                             painter = painterResource(R.drawable.ic_done),
@@ -169,7 +161,7 @@ fun SignUpScreen(
                     }
                 }
 
-
+                Spacer(modifier = Modifier.height(H(0.005f)))
                 CustomAuthButton({onSkiptoHome()}, text = R.string.Sign_up)
 
                 Text(
