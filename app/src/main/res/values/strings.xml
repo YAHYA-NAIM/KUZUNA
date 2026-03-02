@@ -23,7 +23,7 @@
     <string name="password_hint">Password</string>
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="name_hint">Name</string>
-    <string name="email_hint">Email or phone number</string>
+    <string name="email_hint">Email </string>
     <string name="forgot_pass">Forgot password?</string>
     <string name="password_must">Your Password must contain:</string>
     <string name="atleast">Atleast 6 characters</string>
@@ -37,6 +37,10 @@
     <string name="Google">Sign in with Google</string>
     <string name="Google2">Sign Up with Google</string>
 
+    <!-- home strings -->
+    <string name="hello">Hello</string>
+    <string name="HomeHeaderText">What are you cooking today?</string>
+    <string name="search">Search recipe</string>
 
 
 

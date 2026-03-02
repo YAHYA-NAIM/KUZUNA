@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import kuzina.com.ui.screens.auth.LoginScreen
 import kuzina.com.ui.screens.auth.SignUpScreen
-import kuzina.com.ui.screens.home.HomeScreen
+import kuzina.com.ui.screens.home.HomeContainerScreen
 import kuzina.com.ui.screens.onboardings.OnboardingScreen
 import kuzina.com.ui.screens.splashscreen.SplashScreen
 import kuzina.com.util.constants.Routes
@@ -62,7 +62,7 @@ fun NavGraph(navController: NavHostController) {
         }
 
         composable(Routes.Home.route) {
-            HomeScreen()
+            HomeContainerScreen()
         }
 
     }

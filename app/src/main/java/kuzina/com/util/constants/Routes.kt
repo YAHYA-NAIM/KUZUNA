@@ -7,4 +7,8 @@ sealed class Routes(val route: String) {
 
     object SignUp : Routes("SignUp")
     object Onboarding : Routes("onboarding")
+
+    object HomeTab : Routes("home_tab")
+    object FavorisTab : Routes("favoris_tab")
+    object ProfileTab : Routes("profile_tab")
 }
